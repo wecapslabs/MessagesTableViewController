@@ -33,7 +33,8 @@
 
 <p><strong>See more <a href="https://github.com/jessesquires/MessagesTableViewController/tree/master/Screenshots">screenshots</a> in the <code>Screenshots/</code> directory. (Surprise!)</strong></p>
 
-<h2>About</h2>
+<h2>
+<a name="about" class="anchor" href="#about"><span class="octicon octicon-link"></span></a>About</h2>
 
 <p>This is based on work by <a href="http://github.com/soffes">@soffes</a> <a href="https://github.com/soffes/ssmessagesviewcontroller">SSMessagingViewController</a>. </p>
 
@@ -41,13 +42,15 @@
 
 <p><a href="https://raw.github.com/jessesquires/MessagesTableViewController/master/Screenshots/iphone5-screenshot4.png">Square message bubbles</a> designed by <a href="http://www.twitter.com/michaelschultz">@michaelschultz</a>.</p>
 
-<h2>Features</h2>
+<h2>
+<a name="features" class="anchor" href="#features"><span class="octicon octicon-link"></span></a>Features</h2>
 
 <ul>
 <li>Up-to-date for iOS 6.0 and ARC (iOS 5.0+ required)</li>
 <li>Storyboards support (if that's how you roll)</li>
 <li>Universal for iPhone and iPad</li>
 <li>Allows arbitrary message (and bubble) sizes</li>
+<li>Copy &amp; paste messages</li>
 <li>Timestamp options</li>
 <li>Swipe/pull down to hide keyboard</li>
 <li>Dynamically resizes input text view as you type</li>
@@ -57,22 +60,27 @@
 <li>Smooth send animations</li>
 <li>Send/Receive sound effects</li>
 <li>Various bubble styles</li>
-</ul><h2>Installation</h2>
+</ul><h2>
+<a name="installation" class="anchor" href="#installation"><span class="octicon octicon-link"></span></a>Installation</h2>
 
-<h3>From <a href="http://www.cocoapods.org">CocoaPods</a>
+<h3>
+<a name="from-cocoapods" class="anchor" href="#from-cocoapods"><span class="octicon octicon-link"></span></a>From <a href="http://www.cocoapods.org">CocoaPods</a>
 </h3>
 
 <pre><code>pod 'JSMessagesViewController'
 </code></pre>
 
-<h3>From source</h3>
+<h3>
+<a name="from-source" class="anchor" href="#from-source"><span class="octicon octicon-link"></span></a>From source</h3>
 
 <ul>
 <li>Drag the <code>JSMessagesTableViewController/</code> folder to your project.</li>
 <li>Add the <code>AudioToolbox.framework</code> to your project, if you want to use the sound effects</li>
-</ul><h2>How To Use</h2>
+</ul><h2>
+<a name="how-to-use" class="anchor" href="#how-to-use"><span class="octicon octicon-link"></span></a>How To Use</h2>
 
-<h5>Subclass <code>JSMessagesViewController</code>
+<h5>
+<a name="subclass-jsmessagesviewcontroller" class="anchor" href="#subclass-jsmessagesviewcontroller"><span class="octicon octicon-link"></span></a>Subclass <code>JSMessagesViewController</code>
 </h5>
 
 <ul>
@@ -85,7 +93,8 @@
 </li>
 </ul>
 </li>
-</ul><h5>Implement the <code>JSMessagesViewDelegate</code> protocol</h5>
+</ul><h5>
+<a name="implement-the-jsmessagesviewdelegate-protocol" class="anchor" href="#implement-the-jsmessagesviewdelegate-protocol"><span class="octicon octicon-link"></span></a>Implement the <code>JSMessagesViewDelegate</code> protocol</h5>
 
 <div class="highlight"><pre><span class="k">-</span> <span class="p">(</span><span class="kt">void</span><span class="p">)</span><span class="nf">sendPressed:</span><span class="p">(</span><span class="n">UIButton</span> <span class="o">*</span><span class="p">)</span><span class="nv">sender</span> <span class="nf">withText:</span><span class="p">(</span><span class="n">NSString</span> <span class="o">*</span><span class="p">)</span><span class="nv">text</span>
 </pre></div>
@@ -102,6 +111,17 @@
 </li>
 </ul>
 </li>
+</ul><div class="highlight"><pre><span class="k">-</span> <span class="p">(</span><span class="n">JSBubbleMessageType</span><span class="p">)</span><span class="nf">messageTypeForRowAtIndexPath:</span><span class="p">(</span><span class="n">NSIndexPath</span> <span class="o">*</span><span class="p">)</span><span class="nv">indexPath</span>
+</pre></div>
+
+<ul>
+<li>The type of bubble for this row, options are:
+
+<ul>
+<li><code>JSBubbleMessageTypeIncoming</code></li>
+<li><code>JSBubbleMessageTypeOutgoing</code></li>
+</ul>
+</li>
 </ul><div class="highlight"><pre><span class="k">-</span> <span class="p">(</span><span class="n">JSBubbleMessageStyle</span><span class="p">)</span><span class="nf">messageStyleForRowAtIndexPath:</span><span class="p">(</span><span class="n">NSIndexPath</span> <span class="o">*</span><span class="p">)</span><span class="nv">indexPath</span>
 </pre></div>
 
@@ -109,14 +129,12 @@
 <li>The <a href="https://github.com/jessesquires/MessagesTableViewController/tree/master/Screenshots">style of the bubble</a> for this row, options are:
 
 <ul>
-<li><code>JSBubbleMessageStyleIncomingDefault</code></li>
-<li><code>JSBubbleMessageStyleIncomingSquare</code></li>
-<li><code>JSBubbleMessageStyleOutgoingDefault</code></li>
-<li><code>JSBubbleMessageStyleOutgoingDefaultGreen</code></li>
-<li><code>JSBubbleMessageStyleOutgoingSquare</code></li>
+<li><code>JSBubbleMessageStyleDefault</code></li>
+<li><code>JSBubbleMessageStyleSquare</code></li>
+<li><code>JSBubbleMessageStyleDefaultGreen</code></li>
 </ul>
 </li>
-</ul><div class="highlight"><pre><span class="k">-</span> <span class="p">(</span><span class="n">JSMessagesViewTimestampPolicy</span><span class="p">)</span><span class="nf">timestampPolicyForMessagesView</span>
+</ul><div class="highlight"><pre><span class="k">-</span> <span class="p">(</span><span class="n">JSMessagesViewTimestampPolicy</span><span class="p">)</span><span class="nf">timestampPolicy</span>
 </pre></div>
 
 <ul>
@@ -130,15 +148,20 @@
 <li><code>JSMessagesViewTimestampPolicyCustom</code></li>
 </ul>
 </li>
+</ul><div class="highlight"><pre><span class="k">-</span> <span class="p">(</span><span class="kt">BOOL</span><span class="p">)</span><span class="nf">hasAvatarForRowAtIndexPath:</span><span class="p">(</span><span class="n">NSIndexPath</span> <span class="o">*</span><span class="p">)</span><span class="nv">indexPath</span><span class="p">;</span>
+</pre></div>
+
+<ul>
+<li>Returns if this row should display an avatar</li>
 </ul><div class="highlight"><pre><span class="k">-</span> <span class="p">(</span><span class="kt">BOOL</span><span class="p">)</span><span class="nf">hasTimestampForRowAtIndexPath:</span><span class="p">(</span><span class="n">NSIndexPath</span> <span class="o">*</span><span class="p">)</span><span class="nv">indexPath</span>
 </pre></div>
 
 <ul>
-<li>Returns if this row should display a timestamp or not, based on the value returned from the above method</li>
-<li>If using a built-in timestamp policy, simply return <code>[self shouldHaveTimestampForRowAtIndexPath:indexPath]</code>
+<li>Returns if this row should display a timestamp or not</li>
+<li>Required if using <code>JSMessagesViewTimestampPolicyCustom</code>
 </li>
-<li>If using <code>JSMessagesViewTimestampPolicyCustom</code>, you are on your own!</li>
-</ul><h5>Implement the <code>JSMessagesViewDataSource</code> protocol</h5>
+</ul><h5>
+<a name="implement-the-jsmessagesviewdatasource-protocol" class="anchor" href="#implement-the-jsmessagesviewdatasource-protocol"><span class="octicon octicon-link"></span></a>Implement the <code>JSMessagesViewDataSource</code> protocol</h5>
 
 <div class="highlight"><pre><span class="k">-</span> <span class="p">(</span><span class="n">NSString</span> <span class="o">*</span><span class="p">)</span><span class="nf">textForRowAtIndexPath:</span><span class="p">(</span><span class="n">NSIndexPath</span> <span class="o">*</span><span class="p">)</span><span class="nv">indexPath</span>
 </pre></div>
@@ -150,52 +173,64 @@
 
 <ul>
 <li>The timestamp to be displayed <em>above</em> this row</li>
-</ul><h5>Implement the <a href="http://developer.apple.com/library/ios/#documentation/uikit/reference/UITableViewDataSource_Protocol/Reference/Reference.html#//apple_ref/occ/intf/UITableViewDataSource">table view data source</a> method that you should be familiar with</h5>
+</ul><div class="highlight"><pre><span class="k">-</span> <span class="p">(</span><span class="n">UIImage</span> <span class="o">*</span><span class="p">)</span><span class="nf">avatarImageForIncomingMessage</span>
+</pre></div>
+
+<ul>
+<li>The avatar image for incoming messages</li>
+</ul><div class="highlight"><pre><span class="k">-</span> <span class="p">(</span><span class="n">UIImage</span> <span class="o">*</span><span class="p">)</span><span class="nf">avatarImageForOutgoingMessage</span>
+</pre></div>
+
+<ul>
+<li>The avatar image for outgoing messages</li>
+</ul><h5>
+<a name="implement-the-table-view-data-source-method-that-you-should-be-familiar-with" class="anchor" href="#implement-the-table-view-data-source-method-that-you-should-be-familiar-with"><span class="octicon octicon-link"></span></a>Implement the <a href="http://developer.apple.com/library/ios/#documentation/uikit/reference/UITableViewDataSource_Protocol/Reference/Reference.html#//apple_ref/occ/intf/UITableViewDataSource">table view data source</a> method that you should be familiar with</h5>
 
 <div class="highlight"><pre><span class="k">-</span> <span class="p">(</span><span class="n">NSInteger</span><span class="p">)</span><span class="nf">tableView:</span><span class="p">(</span><span class="n">UITableView</span> <span class="o">*</span><span class="p">)</span><span class="nv">tableView</span> <span class="nf">numberOfRowsInSection:</span><span class="p">(</span><span class="n">NSInteger</span><span class="p">)</span><span class="nv">section</span>
 </pre></div>
 
-<h5>Customize</h5>
+<h5>
+<a name="customize" class="anchor" href="#customize"><span class="octicon octicon-link"></span></a>Customize</h5>
 
 <ul>
 <li>For custom background color, use <code>- (void)setBackgroundColor:(UIColor *)color</code>
 </li>
 <li>For custom send button, override <code>- (UIButton *)sendButton</code>
 </li>
-</ul><h5>Notes</h5>
+</ul><h5>
+<a name="notes" class="anchor" href="#notes"><span class="octicon octicon-link"></span></a>Notes</h5>
 
 <ul>
 <li>You may present view programmatically, or use Storyboards</li>
 <li>Your <code>JSMessagesViewController</code> subclass <strong>must</strong> be presented in a <code>UINavigationController</code>
 </li>
-</ul><h5>Demo projects included</h5>
+</ul><h5>
+<a name="demo-projects-included" class="anchor" href="#demo-projects-included"><span class="octicon octicon-link"></span></a>Demo projects included</h5>
 
 <ul>
 <li>
 <code>MessagesDemo.xcodeproj</code> for example of programmatic presentation</li>
 <li>
 <code>MessagesDemoStoryboards/MessagesDemoSB.xcodeproj</code> for example of use with Storyboards</li>
-</ul><h2>ToDo</h2>
-
-<ul>
-<li>Landscape mode</li>
-<li>Allow text input view to resize up to navigation bar (instead of only 5 lines)</li>
-<li>Display "To: " search field for new messages</li>
-<li>Option for user avatar to display next to bubbles</li>
-<li>"Send" images or video</li>
-</ul><h2>Apps Using This Control</h2>
+</ul><h2>
+<a name="apps-using-this-control" class="anchor" href="#apps-using-this-control"><span class="octicon octicon-link"></span></a>Apps Using This Control</h2>
 
 <p><a href="http://bit.ly/hemoglobeapp">Hemoglobe</a></p>
-<p><a href="https://itunes.apple.com/us/app/fourchat/id650833730?mt=8">FourChat</a></p>
-<p><em><a href="mailto:jesse.d.squires@gmail.com">Contact me</a> to have your app listed here.</em></p>
 
-<h2>Related Projects</h2>
+<p><a href="https://itunes.apple.com/us/app/fourchat/id650833730?mt=8">FourChat</a></p>
+
+<p><em><a href="mailto:jesse.squires.developer@gmail.com">Contact me</a> to have your app listed here.</em></p>
+
+<h2>
+<a name="related-projects" class="anchor" href="#related-projects"><span class="octicon octicon-link"></span></a>Related Projects</h2>
 
 <p><a href="https://github.com/soffes/ssmessagesviewcontroller">SSMessagingViewController</a></p>
 
 <p><a href="https://github.com/acani/AcaniChat">AcaniChat</a></p>
 
-<h2><a href="http://opensource.org/licenses/MIT">MIT License</a></h2>
+<h2>
+<a name="mit-license" class="anchor" href="#mit-license"><span class="octicon octicon-link"></span></a><a href="http://opensource.org/licenses/MIT">MIT License</a>
+</h2>
 
 <p>You are free to use this as you please. No attribution necessary. <strong>However, a link back to <a href="http://www.hexedbits.com">Hexed Bits</a> or here would be appreciated. If you use this, please tell me about it!</strong></p>
 
