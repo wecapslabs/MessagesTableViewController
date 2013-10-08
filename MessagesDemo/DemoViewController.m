@@ -136,7 +136,7 @@
     return [self.timestamps objectAtIndex:indexPath.row];
 }
 
-- (UIImage *)avatarImageForIncomingMessage
+- (UIImage *)avatarImageForIncomingMessage:(NSIndexPath *)indexPath
 {
     return [UIImage imageNamed:@"demo-avatar-woz"];
 }
