@@ -79,10 +79,10 @@
     self.detailTextLabel.text = nil;
     self.detailTextLabel.hidden = YES;
     
-    UILongPressGestureRecognizer *recognizer = [[UILongPressGestureRecognizer alloc] initWithTarget:self
-                                                                                             action:@selector(handleLongPress:)];
-    [recognizer setMinimumPressDuration:0.4];
-    [self addGestureRecognizer:recognizer];
+//    UILongPressGestureRecognizer *recognizer = [[UILongPressGestureRecognizer alloc] initWithTarget:self
+//                                                                                             action:@selector(handleLongPress:)];
+//    [recognizer setMinimumPressDuration:0.4];
+//    [self addGestureRecognizer:recognizer];
 }
 
 - (void)configureTimestampLabel
@@ -135,6 +135,7 @@
         self.avatarImageView.autoresizingMask = (UIViewAutoresizingFlexibleTopMargin
                                                  | UIViewAutoresizingFlexibleLeftMargin
                                                  | UIViewAutoresizingFlexibleRightMargin);
+        self.avatarImageView.userInteractionEnabled = YES;
         [self.contentView addSubview:self.avatarImageView];
     }
     
@@ -217,6 +218,15 @@
     }
     
     self.avatarImageView.image = styledImg;
+}
+
+- (void)setAvatarImageTap {
+    UITapGestureRecognizer *singleTap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(avatarImageTapped:)];
+    [self.avatarImageView addGestureRecognizer:singleTap];
+}
+
+- (void)avatarImageTapped:(UIGestureRecognizer *)gestureRecognizer {
+    [[NSNotificationCenter defaultCenter] postNotificationName:@"avatarImageTapped" object:self];
 }
 
 + (CGFloat)neededHeightForText:(NSString *)bubbleViewText timestamp:(BOOL)hasTimestamp avatar:(BOOL)hasAvatar
